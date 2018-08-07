@@ -1,0 +1,558 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGW_HR_ADVANCE_PROCESS_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="all_requests" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvUname"/>
+                </Key>
+                <Property Name="IvUname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestType" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Datum" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created on" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uzeit" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="EvUname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="approve_req" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Reqid"/>
+                </Key>
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestType" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Request Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="hap_deduction" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StartPeriod"/>
+                    <PropertyRef Name="StartYear"/>
+                    <PropertyRef Name="FinishPeriod"/>
+                    <PropertyRef Name="FinishYear"/>
+                    <PropertyRef Name="Amount"/>
+                </Key>
+                <Property Name="StartPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Start Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Start Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Finish Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Finish Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Advance Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvInstallmentNumber" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Installments Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvMonthlyDeduction" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Monthly Deduction" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="hap_detail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvReqid"/>
+                </Key>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Request Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Request Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Advance Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="StartPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Start Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Start Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Finish Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Finish Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InstallmentNumber" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Installments Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MonthlyDeduction" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Monthly Deduction" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DraftTenancyContract" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Draft Tenancy Cont." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SignedTenancyContract" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Signed Tenancy Contr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DraftName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Draft File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SignedName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Signed File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="hap_personal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvUname"/>
+                </Key>
+                <Property Name="IvUname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="hap_request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Ename"/>
+                    <PropertyRef Name="ReqidDesc"/>
+                    <PropertyRef Name="Amount"/>
+                    <PropertyRef Name="Waers"/>
+                    <PropertyRef Name="StartPeriod"/>
+                    <PropertyRef Name="StartYear"/>
+                    <PropertyRef Name="FinishPeriod"/>
+                    <PropertyRef Name="FinishYear"/>
+                    <PropertyRef Name="InstallmentNumber"/>
+                    <PropertyRef Name="MonthlyDeduction"/>
+                    <PropertyRef Name="DraftTenancyContract"/>
+                    <PropertyRef Name="SignedTenancyContract"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Advance Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="StartPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Start Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Start Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Finish Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Finish Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InstallmentNumber" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Installments Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MonthlyDeduction" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Monthly Deduction" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DraftTenancyContract" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Draft Tenancy Cont." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SignedTenancyContract" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Signed Tenancy Contr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="hsubsidy_personal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvUname"/>
+                </Key>
+                <Property Name="IvUname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Famst" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Marital stat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ftext" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Marital status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Anzkd" Type="Edm.Decimal" Nullable="false" Precision="3" Scale="0" sap:unicode="false" sap:label="No.of children" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AnnualHousingAllowance" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Housing Allowance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaxEligibilty" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Maximum Eligibilty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="hsubsidy_request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Ename"/>
+                    <PropertyRef Name="ReqidDesc"/>
+                    <PropertyRef Name="Amount"/>
+                    <PropertyRef Name="Waers"/>
+                    <PropertyRef Name="AnnualHousingAllowance"/>
+                    <PropertyRef Name="DifferenceAmount"/>
+                    <PropertyRef Name="Trfst"/>
+                    <PropertyRef Name="Famst"/>
+                    <PropertyRef Name="Fatxt"/>
+                    <PropertyRef Name="Anzkd"/>
+                    <PropertyRef Name="AdditionalFamilyMember"/>
+                    <PropertyRef Name="HouseLocation"/>
+                    <PropertyRef Name="NumberOfRooms"/>
+                    <PropertyRef Name="MaxEligibilty"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Annual Rent Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="AnnualHousingAllowance" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Housing Allowance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DifferenceAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Difference HRA&amp;Rent" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Famst" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Marital stat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fatxt" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Marital status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Anzkd" Type="Edm.Decimal" Nullable="false" Precision="3" Scale="0" sap:unicode="false" sap:label="No.of children" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AdditionalFamilyMember" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Any Additional Famil" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HouseLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="House/Apt. Location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NumberOfRooms" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Number of Rooms" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaxEligibilty" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Maximum Eligibilty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="saladv_personal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvUname"/>
+                </Key>
+                <Property Name="IvUname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="saladv_reasons" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ReasonOfRequesting"/>
+                </Key>
+                <Property Name="ReasonOfRequesting" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Reason of Requesting" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReasonOfRequestingDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Reason of Req. Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="saladv_request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Ename"/>
+                    <PropertyRef Name="ReqidDesc"/>
+                    <PropertyRef Name="Amount"/>
+                    <PropertyRef Name="Waers"/>
+                    <PropertyRef Name="StartPeriod"/>
+                    <PropertyRef Name="StartYear"/>
+                    <PropertyRef Name="FinishPeriod"/>
+                    <PropertyRef Name="FinishYear"/>
+                    <PropertyRef Name="InstallmentNumber"/>
+                    <PropertyRef Name="MonthlyDeduction"/>
+                    <PropertyRef Name="ReasonOfRequesting"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Advance Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="StartPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Start Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Start Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Finish Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Finish Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InstallmentNumber" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Installments Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MonthlyDeduction" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Monthly Deduction" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReasonOfRequesting" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Reason of Requesting" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Attachment" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FileName"/>
+                </Key>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="get_attachment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvAttachmentType"/>
+                    <PropertyRef Name="IvReqid"/>
+                </Key>
+                <Property Name="IvAttachmentType" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Attachment Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvFileBase64" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="EV_FILE_BASE64" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="club_personal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvUname"/>
+                </Key>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Pers. subarea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currentdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Eligibilty" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Eligibilty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvUname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Org. Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrgehTxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaim" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaimCash" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Cash Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaimTotal" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Total Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RemaingBalance" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Remaing Balance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="club_request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="PreviousClaim"/>
+                    <PropertyRef Name="Ename"/>
+                    <PropertyRef Name="PreviousClaimCash"/>
+                    <PropertyRef Name="ReqidDesc"/>
+                    <PropertyRef Name="PreviousClaimTotal"/>
+                    <PropertyRef Name="Amount"/>
+                    <PropertyRef Name="Waers"/>
+                    <PropertyRef Name="CalenderYear"/>
+                    <PropertyRef Name="PaymentMethod"/>
+                    <PropertyRef Name="RemaingBalance"/>
+                    <PropertyRef Name="Eligibilty"/>
+                    <PropertyRef Name="Orgeh"/>
+                    <PropertyRef Name="Btrtl"/>
+                    <PropertyRef Name="Trfst"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaim" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaimCash" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Cash Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaimTotal" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Total Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount to Be Paid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="CalenderYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Calender Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentMethod" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Payment Method" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RemaingBalance" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Remaing Balance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Eligibilty" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Eligibilty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Org. Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Pers. subarea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="club_calc_amt" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvPaymentMethod"/>
+                    <PropertyRef Name="IvPernr"/>
+                    <PropertyRef Name="IvRequestedAmount"/>
+                    <PropertyRef Name="IvTrfst"/>
+                </Key>
+                <Property Name="IvPaymentMethod" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Payment Method" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvPernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvRequestedAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Requested Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvTrfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvPreviousClaim" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvPreviousClaimCash" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Cash Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvPreviousClaimTotal" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Total Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvRemaingBalance" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Remaing Balance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="club_detail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvReqid"/>
+                </Key>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Request Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Request Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount to Be Paid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="CalenderYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Calender Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentMethod" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Payment Method" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaim" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaimCash" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Cash Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreviousClaimTotal" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Previous Total Claim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RemaingBalance" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Remaing Balance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Eligibilty" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Eligibilty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Org. Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Pers. subarea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReceiptName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Receipt File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="schallow_personal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvUname"/>
+                </Key>
+                <Property Name="Btext" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="PS text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvUname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Pers. subarea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Org. Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrgehTxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currentdate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="schallow_calc_amt" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvTrfst"/>
+                    <PropertyRef Name="IvTuitionFeesAmount"/>
+                </Key>
+                <Property Name="IvTrfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvTuitionFeesAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Tuition Fees Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount to Be Paid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="schallow_detail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvReqid"/>
+                </Key>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Request Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Request Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount to Be Paid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="TuitionFeesAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Tuition Fees Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Org. Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Pers. subarea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolLocation" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="School Location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolYear" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="School Year / Term" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentMethod" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Payment Method" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="hsubsidy_detail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvReqid"/>
+                </Key>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Request Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Request Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Annual Rent Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="AnnualHousingAllowance" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Housing Allowance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DifferenceAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Difference HRA&amp;Rent" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Famst" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Marital stat." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fatxt" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Marital status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Anzkd" Type="Edm.Decimal" Nullable="false" Precision="3" Scale="0" sap:unicode="false" sap:label="No.of children" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AdditionalFamilyMember" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Any Additional Famil" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HouseLocation" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="House/Apt. Location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NumberOfRooms" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Number of Rooms" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaxEligibilty" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Maximum Eligibilty" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TenancyContractName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Tenancy Contract Fil" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TenancyContractBase64" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="TENANCY_CONTRACT_BASE64" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="saladv_detail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvReqid"/>
+                </Key>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Request Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RequestTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Request Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Advance Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="StartPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Start Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Start Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishPeriod" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Finish Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FinishYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Finish Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InstallmentNumber" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Installments Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MonthlyDeduction" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Monthly Deduction" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReasonOfRequesting" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Reason of Requesting" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReasonOfRequestingDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Reason of Req. Desc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReasonName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Reason File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="schallow_request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Btext"/>
+                    <PropertyRef Name="Ename"/>
+                    <PropertyRef Name="ReqidDesc"/>
+                    <PropertyRef Name="Amount"/>
+                    <PropertyRef Name="Waers"/>
+                    <PropertyRef Name="TuitionFeesAmount"/>
+                    <PropertyRef Name="Orgeh"/>
+                    <PropertyRef Name="Btrtl"/>
+                    <PropertyRef Name="Trfst"/>
+                    <PropertyRef Name="SchoolLocation"/>
+                    <PropertyRef Name="SchoolYear"/>
+                    <PropertyRef Name="PaymentMethod"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btext" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="PS text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount to Be Paid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="TuitionFeesAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Tuition Fees Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Org. Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Pers. subarea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolLocation" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="School Location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolYear" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="School Year / Term" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentMethod" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Payment Method" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqidDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Request Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount to Be Paid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="TuitionFeesAmount" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Tuition Fees Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Org. Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Pers. subarea" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btext" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="PS text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Trfst" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="PS level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolLocation" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="School Location" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolYear" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="School Year / Term" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentMethod" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Payment Method" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ItStudentsSet" Relationship="ZGW_HR_ADVANCE_PROCESS_SRV.StudentsAssoc" FromRole="FromRole_StudentsAssoc" ToRole="ToRole_StudentsAssoc"/>
+            </EntityType>
+            <EntityType Name="ItStudents" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lineid"/>
+                </Key>
+                <Property Name="Lineid" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Line Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Student Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentGrade" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Student Grade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="School Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="schallow_student" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvReqid"/>
+                    <PropertyRef Name="Reqid"/>
+                    <PropertyRef Name="Lineid"/>
+                </Key>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lineid" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Line Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Student Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentGrade" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Student Grade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="School Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClaimName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Claim File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VisaName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Passport &amp; Visa File" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="EtStudents" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvReqid"/>
+                    <PropertyRef Name="Reqid"/>
+                    <PropertyRef Name="Lineid"/>
+                </Key>
+                <Property Name="IvReqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reqid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Request Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lineid" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Line Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Student Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StudentGrade" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Student Grade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchoolName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="School Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClaimName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Claim File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VisaName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Passport &amp; Visa File" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="StudentsAssoc" sap:content-version="1">
+                <End Type="ZGW_HR_ADVANCE_PROCESS_SRV.header" Multiplicity="1" Role="FromRole_StudentsAssoc"/>
+                <End Type="ZGW_HR_ADVANCE_PROCESS_SRV.ItStudents" Multiplicity="*" Role="ToRole_StudentsAssoc"/>
+            </Association>
+            <EntityContainer Name="ZGW_HR_ADVANCE_PROCESS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="all_requestsSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.all_requests" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="approve_reqSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.approve_req" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="hap_deductionSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.hap_deduction" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="hap_detailSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.hap_detail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="hap_personalSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.hap_personal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="hap_requestSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.hap_request" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="hsubsidy_personalSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.hsubsidy_personal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="hsubsidy_requestSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.hsubsidy_request" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="saladv_personalSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.saladv_personal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="saladv_reasonsSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.saladv_reasons" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="saladv_requestSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.saladv_request" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AttachmentSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.Attachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="get_attachmentSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.get_attachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="club_personalSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.club_personal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="club_requestSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.club_request" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="club_calc_amtSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.club_calc_amt" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="club_detailSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.club_detail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="schallow_personalSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.schallow_personal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="schallow_calc_amtSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.schallow_calc_amt" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="schallow_detailSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.schallow_detail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="hsubsidy_detailSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.hsubsidy_detail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="saladv_detailSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.saladv_detail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="schallow_requestSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.schallow_request" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="headerSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ItStudentsSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.ItStudents" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="schallow_studentSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.schallow_student" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EtStudentsSet" EntityType="ZGW_HR_ADVANCE_PROCESS_SRV.EtStudents" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="StudentsAssocSet" Association="ZGW_HR_ADVANCE_PROCESS_SRV.StudentsAssoc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="headerSet" Role="FromRole_StudentsAssoc"/>
+                    <End EntitySet="ItStudentsSet" Role="ToRole_StudentsAssoc"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGW_HR_ADVANCE_PROCESS_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGW_HR_ADVANCE_PROCESS_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

@@ -1,0 +1,66 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+ <edmx:Reference Uri="/sap/bc/ui5_ui5/ui2/ushell/resources/sap/ushell/components/factsheet/vocabularies/UI.xml">
+  <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="/sap/bc/ui5_ui5/ui2/ushell/resources/sap/ushell/components/factsheet/vocabularies/Communication.xml">
+  <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="vCard"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+  <edmx:Include Namespace="Org.OData.Measures.V1" Alias="CQP"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="/sap/bc/ui5_ui5/ui2/ushell/resources/sap/ushell/components/factsheet/vocabularies/Common.xml">
+  <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="/sap/opu/odata/sap/ZGW_HR_ADVANCE_PROCESS_SRV/$metadata">
+  <edmx:Include Namespace="ZGW_HR_ADVANCE_PROCESS_SRV" Alias="ZGW_HR_ADVANCE_PROCESS_SRV"/>
+ </edmx:Reference>
+ <edmx:DataServices>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="sap.cbesh.cestbon.ZGW_HR_ADVANCE_PROCESS_SRVAnnotation" Alias="ZGW_HR_ADVANCE_PROCESS_SRVAnnotation">
+   <Term Name="all_requests" Type="ZGW_HR_ADVANCE_PROCESS_SRV.all_requests"/>
+   <Annotations Target="ZGW_HR_ADVANCE_PROCESS_SRV.all_requests">
+    <Annotation Term="UI.HeaderInfo">
+     <Record>
+      <PropertyValue Property="TypeName" String="Requests"/>
+      <PropertyValue Property="TypeNamePlural" String="Requests"/>
+      <PropertyValue Property="Title">
+       <Record Type="UI.DataField">
+        <PropertyValue Property="Value" Path="Ename"/>
+       </Record>
+      </PropertyValue>
+      <PropertyValue Property="Description">
+       <Record Type="UI.DataField">
+           <PropertyValue Property="Value" Path="Pernr"/>
+       </Record>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+    <Annotation Term="UI.Identification">
+     <Collection>
+      <Record Type="UI.DataField">
+       <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+       <PropertyValue Property="Value" Path="all_requests"/>
+      </Record>
+     </Collection>
+    </Annotation>
+    <Annotation Term="UI.LineItem">
+     <Collection/>
+    </Annotation>
+    <Annotation Term="UI.Facets">
+     <Collection>
+      <Record Type="UI.CollectionFacet">
+       <Annotation Term="UI.IsSummary"/>
+       <PropertyValue Property="Facets">
+        <Collection>
+         <Record Type="UI.ReferenceFacet">
+          <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+         </Record>
+        </Collection>
+       </PropertyValue>
+      </Record>
+     </Collection>
+    </Annotation>
+   </Annotations>
+  </Schema>
+ </edmx:DataServices>
+</edmx:Edmx>
+<!-- This is a Fact Sheet Annotation Spec Version V4 -->

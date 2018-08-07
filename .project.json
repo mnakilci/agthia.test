@@ -1,0 +1,28 @@
+{
+  "generation": [
+    {
+      "templateId": "factsheet.newfactsheet",
+      "templateVersion": "1.0.0",
+      "dateTimeStamp": "Tue, 07 Aug 2018 09:40:10 GMT"
+    }
+  ],
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "en,fr,de",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "i18n.properties",
+    "resourceModelName": "i18n"
+  },
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/ZGW_HR_ADVANCE_PROCESS_SRV",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "factsheet.facetEditor": {
+    "serviceUrl": "/destinations/Agthia/sap/opu/odata/sap/ZGW_HR_ADVANCE_PROCESS_SRV",
+    "entitySet": "all_requestsSet",
+    "enableOTROnSave": true
+  }
+}
